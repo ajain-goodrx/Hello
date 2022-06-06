@@ -1,28 +1,13 @@
 version: '1.0'
-stages:
-  - checkout
-  - package
-  - test  
 steps:
   main_clone:
     title: Cloning main repository...
     type: git-clone
-    repo: '${{CF_REPO_OWNER}}/${{CF_REPO_NAME}}'
-    revision: '${{CF_REVISION}}'
-    stage: checkout
-  MyAppDockerImage:
-    title: Building Docker Image
-    type: build
-    stage: package
-    image_name: my-app-image
-    working_directory: ./
-    tag: v1.0.1
-    dockerfile: Dockerfile
-    disable_push: true
-  MyUnitTests:
-    title: Running Unit tests
-    image: '${{MyAppDockerImage}}'
-    stage: test 
-    commands: 
-      - pip install pytest
-      - pytest
+    repo: 'ajain-ggodrx/hello'
+    revision: main
+    git: github
+  publish_jar:
+    title: Upload to AP
+    image: 'maven:3.5.2-jdk-8-alpine'
+    commands:
+      - mvn -Dmaven.repo.local=/codefresh/volume/m2_repository -s settings.xml -Dserver.password=${{NEXUS_PASS}} -Dserver.username=${{NEXUS_USER}}  deploy
