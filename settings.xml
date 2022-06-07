@@ -1,16 +1,9 @@
 <settings>
-<servers>
+<servers> 
       <server>
       <id>Anypoint</id>
       <username>{Place your Anypoint Platform’s Username here}</username>
       <password>{Place your Anypoint Platform’s Password here}</password>
-      </server>
-
-      <server>
-      <id>Anypoint</id>
-      <username>{Place your Anypoint Platform’s Username here}</username>
-      <password>{Place your Anypoint Platform’s Password here}</password>
-      </server>
-
+      </server> 
 </servers>
 </settings>
