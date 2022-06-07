@@ -22,7 +22,7 @@ steps:
     image: 'maven:3.5.2-jdk-8-alpine'
     working_directory: "${{clone}}/${{project}}" # Running command where code cloned
     commands:
-      - mvn clean package -Dmaven.repo.local=/codefresh/volume/m2_repository -s settings.xml -Dapp.runtime=${{runtime}} -Denvironment=${{environment}} -Denv=${{env}} "-DencryptionKey=${{encryptionKey}}" -Danypoint.platform.client_id=${{clientId}} -Danypoint.platform.client_secret=${{clientSecret}} -DworkerType=${{worker_type}} -DnumberOfWorkers=${{number_of_workers}} -Dserver.username=${{serveruser}} -Dserver.password=${{serverpass}}
+      - mvn clean package -Dmaven.repo.local=/codefresh/volume/m2_repository -s settings.xml -Dapp.runtime=${{runtime}} -Denvironment=${{environment}} -Denv=${{env}}  -Danypoint.platform.client_id=${{clientId}} -Danypoint.platform.client_secret=${{clientSecret}} -DworkerType=${{worker_type}} -DnumberOfWorkers=${{number_of_workers}} -Dserver.username=${{serveruser}} -Dserver.password=${{serverpass}}
     stage: "build"
     
   deploy application:
@@ -31,5 +31,5 @@ steps:
     image: 'maven:3.5.2-jdk-8-alpine'
     working_directory: "${{clone}}/${{project}}" # Running command where code cloned
     commands:
-      - mvn -Dmaven.repo.local=/codefresh/volume/m2_repository -s settings.xml -Dapp.runtime=${{runtime}} -Denvironment=${{environment}} -Denv=${{env}} "-DencryptionKey=${{encryptionKey}}" -Danypoint.platform.client_id=${{clientId}} -Danypoint.platform.client_secret=${{clientSecret}} -DworkerType=${{worker_type}} -DnumberOfWorkers=${{number_of_workers}} -Dserver.username=${{serveruser}} -Dserver.password=${{serverpass}}   clean deploy -DmuleDeploy -DskipTests
+      - mvn -Dmaven.repo.local=/codefresh/volume/m2_repository -s settings.xml -Dapp.runtime=${{runtime}} -Denvironment=${{environment}} -Denv=${{env}}  -Danypoint.platform.client_id=${{clientId}} -Danypoint.platform.client_secret=${{clientSecret}} -DworkerType=${{worker_type}} -DnumberOfWorkers=${{number_of_workers}} -Dserver.username=${{serveruser}} -Dserver.password=${{serverpass}}   clean deploy -DmuleDeploy -DskipTests
     stage: "deploy"
