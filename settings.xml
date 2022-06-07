@@ -2,8 +2,8 @@
 <servers> 
       <server>
       <id>Anypoint</id>
-      <username>{Place your Anypoint Platform’s Username here}</username>
-      <password>{Place your Anypoint Platform’s Password here}</password>
+        <username>${server.username}</username>
+        <password>${server.password}</password>
       </server> 
 </servers>
 </settings>
